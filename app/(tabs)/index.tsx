@@ -1,5 +1,5 @@
 import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { Button, StyleSheet, View } from 'react-native';
 
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
@@ -17,39 +17,41 @@ export default function HomeScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
+        <ThemedText type="title">Bienvenue au Restaurant !</ThemedText>
         <HelloWave />
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
+
+      {/* Section Menu */}
+      <ThemedView style={styles.sectionContainer}>
+        <ThemedText type="subtitle">Menu</ThemedText>
+        <ThemedText>Découvrez nos plats délicieux et variés, préparés avec des ingrédients frais.</ThemedText>
+        <View style={styles.buttonContainer}>
+          <Button title="Voir le menu" onPress={() => { /* Navigation à venir */ }} />
+        </View>
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
+
+      {/* Section Promotions */}
+      <ThemedView style={styles.sectionContainer}>
+        <ThemedText type="subtitle">Promotions</ThemedText>
+        <ThemedText>Profitez de nos offres spéciales du moment et économisez sur vos plats préférés !</ThemedText>
+        <View style={styles.buttonContainer}>
+          <Button title="Voir les promotions" onPress={() => { /* Navigation à venir */ }} />
+        </View>
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
+
+      {/* Section À propos */}
+      <ThemedView style={styles.sectionContainer}>
+        <ThemedText type="subtitle">À propos</ThemedText>
+        <ThemedText>Notre restaurant vous accueille dans une ambiance chaleureuse et conviviale. Venez vivre une expérience culinaire unique !</ThemedText>
+      </ThemedView>
+
+      {/* Section Contact */}
+      <ThemedView style={styles.sectionContainer}>
+        <ThemedText type="subtitle">Contact & Réservations</ThemedText>
+        <ThemedText>Contactez-nous pour réserver une table ou pour toute question.</ThemedText>
+        <View style={styles.buttonContainer}>
+          <Button title="Nous contacter" onPress={() => { /* Navigation à venir */ }} />
+        </View>
       </ThemedView>
     </ParallaxScrollView>
   );
@@ -60,10 +62,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
+    marginBottom: 16,
   },
-  stepContainer: {
+  sectionContainer: {
     gap: 8,
-    marginBottom: 8,
+    marginBottom: 20,
+    padding: 12,
+    borderRadius: 8,
+    backgroundColor: 'rgba(255,255,255,0.05)',
+  },
+  buttonContainer: {
+    marginTop: 4,
+    alignSelf: 'flex-start',
   },
   reactLogo: {
     height: 178,
