@@ -6,10 +6,13 @@ import { HapticTab } from '@/components/HapticTab';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
+import { useCart } from '@/hooks/useCart';
 import { useColorScheme } from '@/hooks/useColorScheme';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+  const { cart } = useCart();
+  const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
     <Tabs
@@ -45,6 +48,7 @@ export default function TabLayout() {
         options={{
           title: 'Panier',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="cart.fill" color={color} />,
+          tabBarBadge: cartCount > 0 ? cartCount : undefined,
         }}
       />
       <Tabs.Screen
@@ -52,6 +56,13 @@ export default function TabLayout() {
         options={{
           title: 'Admin',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="person.crop.circle.badge.checkmark" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="orders"
+        options={{
+          title: 'Commandes',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="clock.fill" color={color} />, // Icône horloge pour l'historique
         }}
       />
     </Tabs>
